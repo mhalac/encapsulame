@@ -10,7 +10,7 @@ export default function NavDash(props:any) {
 
     return(
         <div>
-            <button className="size-20 bg-red-800" onClick={goto}>
+            <button className="h-[13vh] w-[8vw] text-3xl  bg-red-800" onClick={goto}>
                 {props.title}
             </button>
         </div>
