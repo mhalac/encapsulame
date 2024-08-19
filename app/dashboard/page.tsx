@@ -28,7 +28,6 @@ export default function Dashboard() {
     async function updateValues() {
       const head = new Headers();
       head.append("Intent", "Datos");
-
       const resp = await fetch("http://localhost:3000/api/account", {
         method: "GET",
         headers: head,

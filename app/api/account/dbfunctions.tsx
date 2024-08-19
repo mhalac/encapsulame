@@ -28,9 +28,7 @@ export async function getUser() {
 }
 export async function getCapsulas() {
     const kinde = getKindeServerSession();
-    const set_smth = db.prepare("INSERT INTO capsula_usuario (ID_CUENTA) VALUES(?) ")
-    const id = (await kinde.getUser())?.id;
-    set_smth.run(id)
-    const ultimo_valor = db.prepare("SELECT ID_CAPSULA FROM capsula_usuario ORDER BY ID_CAPSULA DESC LIMIT 1; ")
-    console.log(await(ultimo_valor.get()));
+ //todo hacer que obtenga los valores
+    
+    
 }
