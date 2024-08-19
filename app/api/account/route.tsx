@@ -8,7 +8,12 @@ export async function POST(req:NextRequest) {
     
 }
 export async function GET(req:NextRequest) {
-    console.log("Llego!")
-    const user = await getKindeServerSession();
-    return NextResponse.json({body:db_functions.getUser()},{status:200});
+    const user = await db_functions.getUser();
+    db_functions.getCapsulas();
+    if(req.headers.get("Intent") === "Capsulas"){
+        return NextResponse.json({body:user},{status:204});
+
+    }else{
+        return NextResponse.json({body:user},{status:200});
+    }
 }

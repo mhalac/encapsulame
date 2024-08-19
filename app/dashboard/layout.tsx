@@ -30,13 +30,13 @@ export default function DashboardLayout({
       <div className={custom_font.className}>
         <div className="bg-cover bg-center custom_font bg-slate-700 gap-3 justify-center items-center h-screen flex flex-row">
 
-          <div className="w-[4cm] h-[92vh] bg-black min-w-[4cm] active:draw flex-col  gap-14 py-10 items-center flex">
+          <div className="w-[4cm] h-[92vh] bg-black min-w-[4cm]  flex-col  gap-14 py-10 items-center flex">
             <NavDash title="VER CAPSULAS" direction="/dashboard" icon={dash_icon} />
             <NavDash title="CREAR CAPSULAS" direction="/dashboard/capsules" icon={create_icon} />
             <NavDash title="CERRAR SESION" direction="/dashboard/capsules" icon={signout_icon} />
             <NavDash title="CALENDARIO?" direction="/dashboard/capsules" icon={dash_icon} />
           </div>
-          <div className="w-[88vw] h-[92vh] items-center grid bg-black">{children}</div>
+          {children}
         </div>
       </div>
     </section>
