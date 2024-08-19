@@ -58,20 +58,9 @@ body {
     text-wrap: balance;
   }
 
-  .drawer {
-    animation: draw-in .4s ease-in forwards;
-  }
+
 }
 
 
-.zig-zag {
-  --a: 90deg; /* the angle of the spikes */
-  --s: 60px; /* the size of the spikes */
 
-  mask: conic-gradient(
-      from calc(var(--a) / -2) at bottom,
-      #000 var(--a),
-      #0000 0
-    )
-    50% / var(--s);
-}
+
