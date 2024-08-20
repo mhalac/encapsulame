@@ -10,8 +10,9 @@ export async function POST(req:NextRequest) {
 export async function GET(req:NextRequest) {
     const user = await db_functions.getUser();
     if(req.headers.get("intent") === "capsulas"){
-        db_functions.getCapsulas();
-        return NextResponse.json({body:user},{status:202});
+    
+        const caps = await db_functions.getCapsulas();
+        return NextResponse.json({body:caps},{status:202});
         
 
     }else{

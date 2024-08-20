@@ -54,7 +54,8 @@ export default function Dashboard() {
       </div>
       <hr className="mx-10 mt-5" />
       <div className="flex justify-center w-full h-[83vh]">
-        <CapsulaUI/>
+        
+        <CapsulaUI></CapsulaUI>
 
       </div>
     </div>
