@@ -33,7 +33,6 @@ export async function getUser() {
 export async function getCapsulas() {
     const kinde = await getKindeServerSession();
     const id = (await kinde.getUser())?.id;
-    console.log(id)
     
     const trans_select = db.prepare(`SELECT TEXTO, TITULO FROM capsula WHERE ID_CAPSULA IN (
                                     SELECT ID_CAPSULA FROM capsula_usuario WHERE ID_CUENTA = ? ORDER BY ID_CAPSULA DESC)`);

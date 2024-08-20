@@ -2,10 +2,13 @@
 
 import { act, useEffect, useState } from "react";
 
-
+import Capsula from "./capsula";
 export default function CapsulaUI() {
   const [capsulas, actualizarCapsulas] = useState<React.JSX.Element[]>([]);
+  
   useEffect(() => {
+    let temp: React.JSX.Element[] = [];
+
     async function get_capsulas() {
       const data_header = new Headers();
       data_header.append("Intent", "capsulas");
@@ -16,24 +19,22 @@ export default function CapsulaUI() {
       });
       const caps = (await data.json()).body;
 
-      let temp:React.JSX.Element[] = [];
 
-      console.log(caps);
       for (let index = 0; index < caps.length; index++) {
-        console.log(caps[index]);
         temp[index] = (
           <div>
-            <p>IT WORKS HAHA {index}</p>
+            <Capsula text={caps[index].TITULO} number={index + 1}></Capsula>
           </div>
         )
       }
-
       actualizarCapsulas(temp);
-    }
-    get_capsulas();
-  }, [capsulas]);
 
-  return(
+    }
+    
+    get_capsulas();
+  },[]);
+
+  return (
     <div>
       {capsulas}
     </div>

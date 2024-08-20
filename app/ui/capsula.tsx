@@ -1,5 +1,8 @@
-export default async function Capsula(props:any) {
+"use client"
+
+export default function Capsula(props:any) {
+    console.log(props);
     return(
-        <div>{props.title}</div>
+        <div>{props.number}. {props.text}</div>
     )
 }
