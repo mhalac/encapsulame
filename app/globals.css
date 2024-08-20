@@ -66,6 +66,14 @@ body {
       conic-gradient(from calc(var(--a)/-2) at bottom,
         #000 var(--a),#0000 0) 50%/var(--s);
   }
+  .zig-zag-capsule {
+    --a: 80deg; /* the angle of the spikes */
+    --s: 10px;  /* the size of the spikes */
+    
+    mask:  
+      conic-gradient(from calc(var(--a)/-2) at bottom,
+        #000 var(--a),#0000 0) 50%/var(--s);
+  }
 }
 
 

@@ -5,7 +5,7 @@ import { act, useEffect, useState } from "react";
 import Capsula from "./capsula";
 export default function CapsulaUI() {
   const [capsulas, actualizarCapsulas] = useState<React.JSX.Element[]>([]);
-  
+
   useEffect(() => {
     let temp: React.JSX.Element[] = [];
 
@@ -19,25 +19,22 @@ export default function CapsulaUI() {
       });
       const caps = (await data.json()).body;
 
-
       for (let index = 0; index < caps.length; index++) {
         temp[index] = (
-          <div>
-            <Capsula text={caps[index].TITULO} number={index + 1}></Capsula>
-          </div>
-        )
+          <Capsula text={caps[index].TITULO} number={index + 1}></Capsula>
+        );
       }
-      actualizarCapsulas(temp);
 
+      
+      actualizarCapsulas(temp);
     }
-    
+
     get_capsulas();
-  },[]);
+  }, []);
 
   return (
-    <div>
+    <div className="overflow-auto w-[70vw] grid grid-cols-3 gap-y-10  mt-5 h-[40vw]">
       {capsulas}
     </div>
-  )
-
+  );
 }

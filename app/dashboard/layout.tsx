@@ -32,7 +32,7 @@ export default function DashboardLayout({
 
           <div className="w-[4cm] h-[92vh] bg-black min-w-[4cm]  flex-col  gap-14 py-10 items-center flex">
             <NavDash title="VER CAPSULAS" direction="/dashboard" icon={dash_icon} />
-            <NavDash title="CREAR CAPSULAS" direction="/dashboard/capsules" icon={create_icon} />
+            <NavDash title="CREAR CAPSULAS" direction="/dashboard/create" icon={create_icon} />
             <NavDash title="CERRAR SESION" direction="/dashboard/capsules" icon={signout_icon} />
             <NavDash title="CALENDARIO?" direction="/dashboard/capsules" icon={dash_icon} />
           </div>
