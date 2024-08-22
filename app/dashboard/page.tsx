@@ -27,13 +27,13 @@ export default function Dashboard() {
   useEffect(() => {
     async function updateValues() {
       const head = new Headers();
-      head.append("Intent", "Datos");
+      head.append("Intent", "datos");
       const resp = await fetch("http://localhost:3000/api/account", {
         method: "GET",
         headers: head,
       });
       const body = (await resp.json()).body;
-      cambiarMensaje(body.name);
+      cambiarMensaje(body);
     }
     updateValues();
   });
