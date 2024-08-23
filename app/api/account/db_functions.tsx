@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 export async function manageUser(){
 
     const session = await getServerSession(authOptions);
+    //@ts-ignore
     const id = session?.user.id;
 
     if(id === undefined){
@@ -21,23 +22,14 @@ export async function manageUser(){
 
 }
 
-export async function getUser() {
-    return
 
-
-    const username = (await kinde.getUser())?.email;
-    manageUser();
-
-    return {id:id,name:username};
-    
-}
 export async function getCapsulas() {
-    return
+    const session = await getServerSession(authOptions);
+    //@ts-ignore
+    const id = session?.user.id;
 
-
-    
-    const trans_select = db.prepare(`SELECT TEXTO, TITULO FROM capsula WHERE ID_CAPSULA IN (
-                                    SELECT ID_CAPSULA FROM capsula_usuario WHERE ID_CUENTA = ? ORDER BY ID_CAPSULA DESC)`);
+    const trans_select = db.prepare(`SELECT TITULO, FECHA_CREADA, FECHA_APERTURA FROM capsula WHERE ID_CAPSULA IN (
+                                    SELECT ID_CAPSULA FROM capsula_usuario WHERE ID_CUENTA = ?) ORDER BY FECHA_APERTURA ASC`);
     
     const result = trans_select.all(id)
     return await result;

@@ -18,22 +18,26 @@ export default function CapsulaUI() {
         headers: data_header,
       });
       const caps = (await data.json()).body;
-
-      for (let index = 0; index < caps.length; index++) {
-        temp[index] = (
-          <Capsula text={caps[index].TITULO} number={index + 1}></Capsula>
-        );
+      if(caps){
+        
+        for (let index = 0; index < caps.length; index++) {
+          temp[index] = (
+            <Capsula text={caps[index].TITULO} number={index + 1}  unblock_date={caps[index].FECHA_APERTURA}></Capsula>
+          );
+          
+        }
+        
+        
+        actualizarCapsulas(temp);
       }
 
-      
-      actualizarCapsulas(temp);
     }
 
     get_capsulas();
   }, []);
 
   return (
-    <div className="overflow-auto w-[70vw] grid grid-cols-3 gap-y-10  mt-5 h-[40vw]">
+    <div className="overflow-auto w-[70vw]  grid grid-cols-3 gap-y-10  mt-5 h-[40vw]">
       {capsulas}
     </div>
   );

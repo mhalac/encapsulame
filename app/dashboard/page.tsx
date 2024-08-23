@@ -41,7 +41,7 @@ export default function Dashboard() {
 
 
   return (
-    <div className="w-[88vw] h-[92vh] bg-black">
+    <div className="w-[88vw] h-[92vh] bg-slate-800">
       <div className="flex justify-end ml-5 mx-10 mt-10">
         <label
           className={
@@ -52,7 +52,7 @@ export default function Dashboard() {
           <div className="translate-y-[2px]"> {user_icon} </div> {mensaje}
         </label>
       </div>
-      <hr className="mx-10 mt-5" />
+      <hr className="mx-10 mt-5 glowing-card" />
       <div className="flex justify-center w-full h-[83vh]">
         
         <CapsulaUI></CapsulaUI>
