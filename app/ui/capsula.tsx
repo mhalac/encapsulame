@@ -1,13 +1,18 @@
 "use client"
 
+import { useRouter } from "next/navigation";
+
 export default function Capsula(props: any) {
   const open_date = new Date(props.unblock_date);
+  const router = useRouter();
+  
   function ViewText() {
-      
+      router.push("dashboard/visualizar/" + props.capsule_id)
   }
   //bloqueado
   if(new Date() < open_date){
     
+
     const time_until = open_date.getTime() - new Date().getTime();
 
     console.log(time_until)

@@ -28,7 +28,7 @@ export async function getCapsulas() {
     //@ts-ignore
     const id = session?.user.id;
 
-    const trans_select = db.prepare(`SELECT TITULO, FECHA_CREADA, FECHA_APERTURA FROM capsula WHERE ID_CAPSULA IN (
+    const trans_select = db.prepare(`SELECT ID_CAPSULA, TITULO, FECHA_CREADA, FECHA_APERTURA FROM capsula WHERE ID_CAPSULA IN (
                                     SELECT ID_CAPSULA FROM capsula_usuario WHERE ID_CUENTA = ?) ORDER BY FECHA_APERTURA ASC`);
     
     const result = trans_select.all(id)

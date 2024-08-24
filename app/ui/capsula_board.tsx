@@ -22,7 +22,7 @@ export default function CapsulaUI() {
         
         for (let index = 0; index < caps.length; index++) {
           temp[index] = (
-            <Capsula text={caps[index].TITULO} number={index + 1}  unblock_date={caps[index].FECHA_APERTURA}></Capsula>
+            <Capsula text={caps[index].TITULO} number={index + 1} capsule_id = {caps[index].ID_CAPSULA}  unblock_date={caps[index].FECHA_APERTURA}></Capsula>
           );
           
         }
