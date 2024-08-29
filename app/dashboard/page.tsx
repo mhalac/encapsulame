@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import NavDash from "../ui/nav_dash";
 import { Oswald } from "next/font/google";
 import CapsulaUI from "../ui/capsula_board";
+
 const custom_font = Oswald({
   subsets: ["latin"],
   weight: "400",
 });
-export const current_ip = "http://localhost:3000/"
 
 export default function Dashboard() {
   const user_icon = (
@@ -29,12 +29,18 @@ export default function Dashboard() {
     async function updateValues() {
       const head = new Headers();
       head.append("Intent", "datos");
-      const resp = await fetch( current_ip + "/api/account", {
-        method: "GET",
-        headers: head,
-      });
-      const body = (await resp.json()).body;
-      cambiarMensaje(body);
+      try {
+        const resp = await fetch( "http://nest-api:3001/api/account", {
+          method: "GET",
+          headers: head,
+        });
+        const body = (await resp.json()).body;
+        cambiarMensaje(body);
+      } catch (error) {
+        
+      }
+
+
     }
     updateValues();
   });

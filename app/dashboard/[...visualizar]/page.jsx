@@ -4,11 +4,7 @@ import getDB from "@/utils/db";
 import authOptions from "@/lib/authOptions";
 const db = getDB();
 
-export default async function Page({
-  params,
-}: {
-  params: { visualizar: string };
-}) {
+export default async function Page({ params }) {
   //@ts-ignore
   const id_capsula = params.visualizar[1];
 
@@ -22,7 +18,7 @@ export default async function Page({
     result && result["ID_CUENTA"] ? result["ID_CUENTA"] : "000000";
 
   //@ts-ignore
-  
+
   if (
     id_intent === session?.user.id &&
     (id_intent !== undefined || session.id !== undefined)
@@ -30,9 +26,10 @@ export default async function Page({
     const datos_query = db.prepare(
       "SELECT TITULO,FECHA_CREADA, TEXTO FROM capsula WHERE ID_CAPSULA = ?"
     );
-    const datos: any = datos_query.get(id_capsula);
+    const datos = datos_query.get(id_capsula);
     const fecha = new Date(datos["FECHA_CREADA"]);
-    const fecha_formatted = fecha.getDay()  + " / " + fecha.getMonth() + " / " + fecha.getFullYear()
+    const fecha_formatted =
+      fecha.getDay() + " / " + fecha.getMonth() + " / " + fecha.getFullYear();
     return (
       <div className="w-[88vw] min-w-[88vw] h-[92vh]  bg-slate-700 min-h-[92vh] flex flex-col items-center align-middle ">
         <div className=" w-full h-[15vh] flex flex-col justify-center items-center">
@@ -40,12 +37,14 @@ export default async function Page({
           <div className="glowing-line2 w-[28vw] h-[.2vh] mt-4 bg-black" />
         </div>
         <div className="w-[30vw] h-[8vh] bg-purple-400 items-center flex justify-center rounded-full ">
-          <label className="text-white text-center text-3xl">Fecha de creacion: {fecha_formatted}</label>
+          <label className="text-white text-center text-3xl">
+            Fecha de creacion: {fecha_formatted}
+          </label>
         </div>
 
         <div className="w-[30vw] h-[50vh] p-4 bg-white mt-10">
           <p className="text-black inline-block text-2xl w-full line-clamp-2">
-            { datos["TEXTO"] }
+            {datos["TEXTO"]}
           </p>
         </div>
       </div>

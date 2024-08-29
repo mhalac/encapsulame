@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import authOptions from "../../../lib/authOptions.ts"
+import authOptions from "../../../lib/authOptions.js"
 import { NextResponse } from "next/server";
 import { manageUser ,getCapsulas } from "./db_functions.tsx";
 

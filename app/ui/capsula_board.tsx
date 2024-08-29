@@ -3,7 +3,6 @@
 import { act, useEffect, useState } from "react";
 
 import Capsula from "./capsula";
-import { current_ip } from "../dashboard/page";
 export default function CapsulaUI() {
   const [capsulas, actualizarCapsulas] = useState<React.JSX.Element[]>([]);
 
@@ -14,9 +13,10 @@ export default function CapsulaUI() {
       const data_header = new Headers();
       data_header.append("Intent", "capsulas");
 
-      const data = await fetch( current_ip + "/api/account", {
+      const data = await fetch( "127.0.0.1/api/account", {
         method: "GET",
         headers: data_header,
+        cache:"no-store"
       });
       const caps = (await data.json()).body;
       if(caps){

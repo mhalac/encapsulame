@@ -2,9 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { current_ip } from "../page";
 import { NextResponse } from "next/server";
-
 export default function CreateCapsule() {
   const [data, changeData] = useState("Enviar");
   const [resp, cambiarResp] = useState({color: "bg-green-400" ,display:"hidden", msj:""});
@@ -18,10 +16,12 @@ export default function CreateCapsule() {
     head.append("intent", "capsula");
     changeData("Enviando...");
 
-    const data = await fetch( current_ip + "/api/capsula", {
+    const data = await fetch( "127.0.0.1/api/capsula", {
       method: "POST",
       body: formdata,
       headers: head,
+      cache:"no-store"
+
     });
     
     if(data.status === 200){
