@@ -21,7 +21,7 @@ export default function NavDash(props: any) {
         <button
           className={
             base +
-            " transition min-[4vh] h-[5vh] w-[2cm] text-sm min-w-[7vw] glowing-nav text-left flex flex-row items-center text-slate-200 max-w-screen-lg rounded-md"
+            " transition min-[4vh] h-[5vh] w-[2cm] text-sm min-w-[7vw] glowing-nav text-left flex flex-row items-center text-black max-w-screen-lg rounded-md"
           }
           onClick={goto}
         >

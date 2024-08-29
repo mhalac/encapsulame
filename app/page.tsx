@@ -20,7 +20,7 @@ export default function Home() {
           <p className="relative w-[23vw] h-[24vh]  text-4xl justify-center text-center" >CREÁ TU CAPSULA DEL TIEMPO PARA PODER RECORDAR TUS MOMENTOS CON TUS AMIGOS O FAMILIA.</p>
           {session ? (
           <button className="text-5xl bg-black translate-y-3 px-[1.5vw] py-[2vh]" onClick={()=>{
-            router.push("http://localhost:3000/dashboard")
+            router.push("/dashboard")
           }}> VER MIS CAPSULAS</button>
 
           ) : (
