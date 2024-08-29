@@ -38,7 +38,7 @@ export default function CapsulaUI() {
   }, []);
 
   return (
-    <div className="overflow-auto w-[70vw]  grid grid-cols-3 gap-y-10  mt-5 h-[40vw]">
+    <div className="overflow-auto w-[80%] min-w-[10%]   grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-10  mt-5 h-[90%] ">
       {capsulas}
     </div>
   );

@@ -6,10 +6,14 @@ const db = getDB();
 export async function POST(req:NextRequest){
     const data = await req.formData();
     const session = await getServerSession(authOptions);
+    const fecha = data.get("fecha") ? Date() : undefined;
+    const titulo = data.get("titulo") ? String(data.get("titulo")) : undefined;
 
     if(req.headers.get("intent") === "capsula"){
         //todo agregar verificacion de datos backend :P
-        
+        if ( (fecha === undefined || fecha < Date()) || (titulo === undefined || titulo.length < 10)){
+            return NextResponse.json({},{status:400})
+        }
                 
         const smt_last_index = db.prepare("SELECT ID_CAPSULA FROM capsula_usuario ORDER BY ID_CAPSULA DESC")
         const last_index = smt_last_index.get();

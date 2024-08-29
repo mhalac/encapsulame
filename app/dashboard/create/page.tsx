@@ -3,10 +3,12 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { current_ip } from "../page";
+import { NextResponse } from "next/server";
 
 export default function CreateCapsule() {
   const [data, changeData] = useState("Enviar");
-  const router = useRouter();
+  const [resp, cambiarResp] = useState({color: "bg-green-400" ,display:"hidden", msj:""});
+
   async function Submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -14,34 +16,40 @@ export default function CreateCapsule() {
 
     const head = new Headers();
     head.append("intent", "capsula");
+    changeData("Enviando...");
 
-    const data = fetch( current_ip + "/api/capsula", {
+    const data = await fetch( current_ip + "/api/capsula", {
       method: "POST",
       body: formdata,
       headers: head,
     });
-
-    data.then(() => {
-      router.push("/dashboard");
-    });
-    changeData("Enviando...");
+    
+    if(data.status === 200){
+      cambiarResp({...resp,display:"visible",color:"green-500",msj:"Enviado correctamente"})
+    }else{
+      cambiarResp({...resp,display:"visible",color:"red-500",msj:"Se ha producido un error"})
+    }
+   
+    
   }
 
   return (
-    <div className="w-[88vw] min-w-[400px] h-[92vh] grid grid-rows-1 md:grid-cols-2 xl:grid-cols-3 bg-slate-700 min-h-[92vh] items-center justify-items-center">
+    <div className="w-[88vw] min-w-[400px]  h-[92vh] grid grid-rows-1 md:grid-cols-2 xl:grid-cols-3 bg-slate-700 min-h-[92vh] items-center justify-items-center">
 
       <div className="w-[29vw] translate-x-[5vw] h-[59vh]">
-        <h1 className="xl:text-7xl md:text-5xl  text-left">
+        <h1 className="xl:text-7xl md:text-5xl sm:2xl text-left">
           CREA TU CAPSULA PARA RECORDAR TUS MOMENTOS EN EL FUTURO
         </h1>
         <hr className="bg-gradient-to-r from-fuchsia-700 glowing-line2 to-purple-500" />
       </div>
-      <div className="w-[.15vw] h-[90vh] hidden  xl:block bg-gradient-to-r from-fuchsia-700 align-middle glowing-line to-purple-500 m-5"></div>
+      <div className="w-[.15vw] h-[90vh] hidden sm:hidden  xl:block bg-gradient-to-r from-fuchsia-700 align-middle glowing-line to-purple-500 m-5"></div>
       <div className="w-[29vw] -translate-x-[5vw] min-w-[320px] -translate-y-[15vh] md:-translate-y-[9vh] xl:-translate-y-[5vh] h-[59vh]">
         {
           /*formulario*/
         }
-        
+        <div className={`${resp.display} w-auto h-fit justify-center mb-[10px] row-span-2 text-center text-5xl`}>
+          <p className={`text-${resp.color}`}> {resp.msj}</p>
+        </div>
         <form onSubmit={Submit} className="flex flex-col h-full w-full ">
           <label htmlFor="titulo" className="text-3xl">
             TITULO DE CAPSULA:
