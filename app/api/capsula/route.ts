@@ -11,7 +11,7 @@ export async function POST(req:NextRequest){
 
     if(req.headers.get("intent") === "capsula"){
         //todo agregar verificacion de datos backend :P
-        if ( (fecha === undefined || fecha < Date()) || (titulo === undefined || titulo.length < 10)){
+        if ( (fecha === undefined || fecha < Date()) || (titulo === undefined || titulo.length < 4)){
             return NextResponse.json({},{status:400})
         }
                 

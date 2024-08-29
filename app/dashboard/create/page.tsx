@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export default function CreateCapsule() {
   const [data, changeData] = useState("Enviar");
   const [resp, cambiarResp] = useState({color: "bg-green-400" ,display:"hidden", msj:""});
-
+  const router = useRouter();
   async function Submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -23,14 +23,15 @@ export default function CreateCapsule() {
       cache:"no-store"
 
     });
-    
+    changeData("Enviado!");
+
     if(data.status === 200){
       cambiarResp({...resp,display:"visible",color:"green-500",msj:"Enviado correctamente"})
     }else{
       cambiarResp({...resp,display:"visible",color:"red-500",msj:"Se ha producido un error"})
     }
-   
-    
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    router.push("/dashboard")
   }
 
   return (
