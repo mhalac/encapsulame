@@ -19,7 +19,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -70,10 +69,10 @@ Encapsulame es una pagina web enfocada en la creacion de capsulas del tiempo vir
 
 
 <!-- GETTING STARTED -->
-## Getting Started
-El Proyecto ya esta buildeado pero se puede construir localmente si uno asi lo quiere
+## Para arrancar
+El Proyecto ya esta buildeado pero se puede construir localmente si uno asi lo quiere.
 
-### Prerequisites
+### Pre-requisitos 
 En los pre-requisitos uno necesita tener primero npm instalado y despues las dependencias del mismo instaladas
 * npm
   ```sh
@@ -134,7 +133,7 @@ En los pre-requisitos uno necesita tener primero npm instalado y despues las dep
 
 Matias Halac - matiashalac1@gmail.com
 
-Link de proyecto: [https://github.com/mhalac/encapsulame](https://github.com/mhalac)
+Link de proyecto: [https://encapsulame.matihalac.com/](https://encapsulame.matihalac.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
